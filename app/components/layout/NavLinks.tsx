@@ -1,9 +1,9 @@
-import Link from "next/link";
+"use client";
 
-type NavItem = {
-  href: string;
-  label: string;
-};
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+type NavItem = { href: string; label: string };
 
 const NAV_ITEMS: NavItem[] = [
   { href: "/", label: "Home" },
@@ -14,22 +14,20 @@ const NAV_ITEMS: NavItem[] = [
   { href: "/contact", label: "Contact" },
 ];
 
-type Props = {
-  onNavigate?: () => void;
-};
-
-export default function NavLinks({ onNavigate }: Props) {
+export default function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <nav aria-label="Navigation Principal">
-      <ul className="flex flex-col gap-1 lg:flex-row lg:gap-6">
+    <nav aria-label="Navigation principale">
+      <ul className="flex flex-col gap-2 lg:flex-row lg:gap-8">
         {NAV_ITEMS.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
               onClick={onNavigate}
-              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+              className="group relative inline-block px-1 py-1 text-sm font-medium text-gray-800 transition-colors duration-200 hover:text-[#f97316]"
             >
               {item.label}
+
+              <span className="absolute left-0 right-0 -bottom-0.5 h-[2px] origin-left scale-x-0 bg-[#f97316] transition-transform duration-200 ease-out group-hover:scale-x-100" />
             </Link>
           </li>
         ))}
