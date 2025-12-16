@@ -1,14 +1,10 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import Header from "./components/layout/Header";
+import { MobileHeader } from "./components/layout/MobileHeader";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "MS SaaS Starter",
-  description:
-    "Starter Next.js 15 + Tailwind + shadcn + Framer par Mathieu Scicluna",
-};
 
 export default function RootLayout({
   children,
@@ -16,13 +12,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body
-        className={`${inter.className} min-h-screen flex flex-col bg-white text-gray-900`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main className="flex-grow">{children}</main>
-        </ThemeProvider>
+    <html lang="fr">
+      <body className="min-h-screen bg-gray-50 text-gray-900">
+        <Header />
+        <MobileHeader />
+
+        <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
       </body>
     </html>
   );
