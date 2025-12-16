@@ -3,7 +3,7 @@ import NavLinks from "./NavLinks";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 hidden bg-white/70 backdrop-blur lg:block">
+    <header className="sticky top-0 z-40 hidden border-b border-border/60 bg-background/70 backdrop-blur lg:block">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
