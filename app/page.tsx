@@ -5,7 +5,7 @@ import Hero from "./components/home/Hero";
 
 export default function HomePage() {
   return (
-    <section className="flex flex-col items-center justify-center h-[80vh] text-center px-4">
+    <section className="w-full">
       <Hero />
     </section>
   );
