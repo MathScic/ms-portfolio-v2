@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import NavLinks from "./NavLinks";
+import { siteConfig } from "@/config/site";
 
 export function MobileHeader() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,13 @@ export function MobileHeader() {
           ☰
         </motion.button>
 
-        <span className="text-sm font-semibold">Mathieu</span>
+        <span className="text-sm font-semibold">
+          <img
+            src={siteConfig.logo.src}
+            alt={siteConfig.logo.alt}
+            className="h-12 w-auto"
+          />
+        </span>
         <span className="w-10" />
       </header>
 

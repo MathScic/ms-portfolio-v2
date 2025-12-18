@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Link from "next/link";
+import ButtonLink from "../ui/ButtonLink";
 
 export default function Hero() {
   return (
@@ -61,19 +62,13 @@ export default function Hero() {
           className="relative mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row 
 "
         >
-          <Link
-            href="/projects"
-            className="inline-flex items-center justify-center rounded-full bg-[#f97316] px-10 py-3 text-xl font-bold text-white transition hover:opacity-90 hover:scale-[1.03] transition-transform"
-          >
+          <ButtonLink href="/projects" variant="primary">
             Projets
-          </Link>
+          </ButtonLink>
 
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white px-10 py-3 text-xl font-bold text-gray-900 transition hover:border-gray-400 hover:scale-[1.03] transition-transform"
-          >
+          <ButtonLink href="/contact" variant="secondary">
             Contact
-          </Link>
+          </ButtonLink>
         </motion.div>
       </div>
     </section>

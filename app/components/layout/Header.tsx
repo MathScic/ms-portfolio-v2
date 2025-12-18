@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NavLinks from "./NavLinks";
+import { siteConfig } from "@/config/site";
 
 export function Header() {
   return (
@@ -10,12 +11,15 @@ export function Header() {
           className="group inline-flex items-baseline gap-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300"
           aria-label="Aller à l’accueil"
         >
-          <span className="text-base font-semibold text-gray-900 group-hover:opacity-80">
-            Mathieu
-          </span>
-          <span className="text-xs text-gray-500 group-hover:opacity-80">
-            Développeur Fullstack • Next.js
-          </span>
+          <div className="flex items-center gap-2">
+            <img
+              src={siteConfig.logo.src}
+              alt={siteConfig.logo.alt}
+              className="h-8 w-auto"
+            />
+
+            <span className="text-sm text-gray-500">{siteConfig.title}</span>
+          </div>
         </Link>
 
         <NavLinks />

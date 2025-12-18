@@ -1,12 +1,16 @@
-"use client";
-
-import { motion } from "framer-motion";
+import FeaturedProject from "./components/home/FeaturedProject";
 import Hero from "./components/home/Hero";
+
+import Reveal from "./components/ui/Reveal";
 
 export default function HomePage() {
   return (
-    <section className="w-full">
+    <>
       <Hero />
-    </section>
+
+      <Reveal from="right">
+        <FeaturedProject />
+      </Reveal>
+    </>
   );
 }
