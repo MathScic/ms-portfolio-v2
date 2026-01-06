@@ -60,17 +60,16 @@ export default function FeaturedProject() {
       ? FEATURED
       : FEATURED.filter((p) => p.tags.includes(active));
 
-  const getInitial = (idx: number) => {
-    //Mobile : alternance gauche droite
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
-      return { opacity: 0, x: idx % 2 === 0 ? -40 : 40, y: 0 };
-    }
-
-    //Desktop (md+) : gauche / bas /droite
+  const getDesktopInitial = (idx: number) => {
     if (idx % 3 === 0) return { opacity: 0, x: -40, y: 0 };
     if (idx % 3 === 1) return { opacity: 0, x: 0, y: 24 };
     return { opacity: 0, x: 40, y: 0 };
   };
+
+  const getMobileInitial = (idx: number) => ({
+    opacity: 0,
+    x: idx % 2 === 0 ? -40 : 40,
+  });
 
   return (
     <section className="py-20">
@@ -95,23 +94,43 @@ export default function FeaturedProject() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {filterred.map((p, idx) => (
-              <motion.div
-                key={p.title}
-                initial={getInitial(idx)}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-              >
-                <ProjectCard
-                  key={p.title}
-                  title={p.title}
-                  description={p.description}
-                  tags={p.tags}
-                  href={p.href}
-                  externalUrl={p.externalUrl}
-                  image={p.images}
-                />
-              </motion.div>
+              <div key={p.title}>
+                {/* Mobile */}
+                <motion.div
+                  className="md:hidden"
+                  initial={getMobileInitial(idx)}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                >
+                  <ProjectCard
+                    title={p.title}
+                    description={p.description}
+                    tags={p.tags}
+                    href={p.href}
+                    externalUrl={p.externalUrl}
+                    image={p.images}
+                  />
+                </motion.div>
+
+                {/* Desktop */}
+                <motion.div
+                  className="hidden md:block"
+                  initial={getDesktopInitial(idx)}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                >
+                  <ProjectCard
+                    title={p.title}
+                    description={p.description}
+                    tags={p.tags}
+                    href={p.href}
+                    externalUrl={p.externalUrl}
+                    image={p.images}
+                  />
+                </motion.div>
+              </div>
             ))}
           </div>
 
